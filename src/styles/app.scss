@@ -35,6 +35,8 @@ body {
 
 @import "admin-styles/mixin";
 
+@import "home";
+
 @import "admin-styles/dashboard";
 @import "admin-styles/products";
 @import "admin-styles/chart";
@@ -72,6 +74,7 @@ body {
     position: absolute;
     left: calc(100% - 100px);
     top: 8%;
+    z-index: 10;
     > div {
       @include flex(column, flex-start, center, 0.2);
     }
