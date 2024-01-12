@@ -2,6 +2,7 @@ import { Suspense, lazy } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Loader from "./components/loader";
 import Header from "./components/header";
+const Shipping = lazy(() => import("./pages/shipping"));
 const Home = lazy(() => import("./pages/home"));
 const Search = lazy(() => import("./pages/search"));
 const Cart = lazy(() => import("./pages/cart"));
@@ -30,12 +31,20 @@ const App = () => {
   return (
     <BrowserRouter>
       {/* Header  */}
-      <Header/>
+      <Header />
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<Search />} />
           <Route path="/cart" element={<Cart />} />
+
+
+          {/* Logged In User Routes  */}
+
+
+          <Route>
+          <Route path="/shipping" element={<Shipping />} />
+         </Route>
           {/* Admin Routes  */}
           // Rotues
           <Route
