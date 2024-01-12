@@ -16,7 +16,7 @@ const ProductCard = ({
   price,
   name,
   photo,
-  // stock,
+  stock,
   handler,
 }: ProductProps) => {
   return (
