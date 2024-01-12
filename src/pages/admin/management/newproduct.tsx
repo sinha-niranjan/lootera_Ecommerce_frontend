@@ -20,6 +20,7 @@ const NewProduct = () => {
         if (typeof reader.result === "string") {
           setPhotoPrev(reader.result);
           setPhoto(file);
+          console.log(photo);
         }
       };
     }

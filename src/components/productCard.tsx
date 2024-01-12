@@ -9,14 +9,14 @@ type ProductProps = {
   handler: () => void;
 };
 
-const server = "jdkfdfkjdf";
+// const server = "jdkfdfkjdf";
 
 const ProductCard = ({
-  productId,
+  // productId,
   price,
   name,
   photo,
-  stock,
+  // stock,
   handler,
 }: ProductProps) => {
   return (
