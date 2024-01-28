@@ -2,7 +2,8 @@ import { Link } from "react-router-dom";
 import ProductCard from "../components/productCard";
 
 const Home = () => {
-  const addToCartHandler = () => {};
+  const addToCartHandler = () => { };
+  
   return (
     <div className="home">
       <section></section>
