@@ -4,6 +4,7 @@ import {
   CategoriesResponse,
   MessageResponse,
   NewProductRequest,
+  ProductResponse,
   SearchProductRequest,
   SearchProductResponse,
 } from "../../types/api-types";
@@ -37,13 +38,17 @@ export const productAPI = createApi({
       },
       providesTags: ["product"],
     }),
+    productDetails: builder.query<ProductResponse, string>({
+      query: (id) => id,
+      providesTags: ["product"],
+    }),
     newProduct: builder.mutation<MessageResponse, NewProductRequest>({
       query: ({ formData, id }) => ({
         url: `new?id=${id}`,
         method: "POST",
         body: formData,
       }),
-      invalidatesTags:["product"]
+      invalidatesTags: ["product"],
     }),
   }),
 });
@@ -53,5 +58,6 @@ export const {
   useAllProductsQuery,
   useCatrgoriesQuery,
   useSearchProductsQuery,
+  useProductDetailsQuery,
   useNewProductMutation,
 } = productAPI;
