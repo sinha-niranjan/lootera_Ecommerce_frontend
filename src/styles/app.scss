@@ -58,13 +58,11 @@ body {
   }
 }
 
-
 .heading {
   @include heading;
   margin: 1rem 0;
   text-align: center;
 }
-
 
 .header {
   padding: 1rem;
@@ -103,7 +101,6 @@ body {
     }
   }
 }
-
 
 .admin-container {
   @include grid(1fr 4fr, 2rem);
@@ -269,6 +266,19 @@ body {
   }
 }
 
+.skeletonLoader {
+  display: flex;
+  flex-direction: column;
+  > .skeletonShape {
+    height: 30px;
+    width: 100%;
+    background-color: #ddd;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    animation: skeletonLoading 1.5s infinite;
+  }
+}
+
 @keyframes loading-animation {
   to {
     transform: rotateZ(360deg);
@@ -277,5 +287,17 @@ body {
 @keyframes up-and-down {
   to {
     transform: translate(-50%, -20%);
+  }
+}
+
+@keyframes skeletonLoading {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
   }
 }
