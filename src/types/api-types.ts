@@ -5,8 +5,8 @@ export type CustomError = {
   data: {
     message: string;
     success: boolean;
-  }
-}
+  };
+};
 
 export type MessageResponse = {
   success: boolean;
@@ -21,4 +21,9 @@ export type UserResponse = {
 export type AllProductResponse = {
   success: boolean;
   products: Product[];
+};
+
+export type CategoriesResponse = {
+  success: boolean;
+  categories: string[];
 };
