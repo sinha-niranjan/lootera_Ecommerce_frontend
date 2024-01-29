@@ -4,12 +4,19 @@ const Loader = () => {
 
 export default Loader;
 
-export const Skeleton = ({ width ="unset" }: { width ?: string }) => {
+export const Skeleton = ({
+  width = "unset",
+  length = 3,
+}: {
+  width?: string;
+  length?: number;
+}) => {
+  const skeletons = Array.from({ length }, (_, idx) => (
+    <div key={idx} className="skeletonShape"></div>
+  ));
   return (
     <div className="skeletonLoader" style={{ width }}>
-      <div className="skeletonShape"> </div>
-      <div className="skeletonShape"></div>
-      <div className="skeletonShape"></div>
+     {skeletons}
     </div>
   );
 };
