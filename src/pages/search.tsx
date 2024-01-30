@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ProductCard from "../components/productCard";
 import {
   useCatrgoriesQuery,
@@ -16,8 +16,10 @@ const Search = () => {
     error,
   } = useCatrgoriesQuery("");
   const [search, setSearch] = useState("");
+  const [searchText, setSearchText] = useState("");
   const [sort, setSort] = useState("");
   const [maxPrice, setMaxPrice] = useState(100000);
+  const [maxPriceText, setMaxPriceText] = useState(100000);
   const [category, setCategory] = useState("");
   const [page, setPage] = useState(1);
 
@@ -34,7 +36,7 @@ const Search = () => {
     price: maxPrice,
   });
 
-  console.log(searchedData);
+  // console.log(searchedData);
 
   const addToCartHandler = () => {};
 
@@ -44,6 +46,20 @@ const Search = () => {
   if (isError) toast.error((error as CustomError).data.message);
   if (productIsError) toast.error((productError as CustomError).data.message);
 
+  useEffect(() => {
+    const delayDebounceFun = setTimeout(() => {
+      setSearch(searchText);
+      // console.log(search);
+    }, 500);
+    return () => clearTimeout(delayDebounceFun);
+  }, [searchText]);
+
+  useEffect(() => {
+    const delayDebounceFun = setTimeout(() => {
+      setMaxPrice(maxPriceText);
+    }, 100);
+    return () => clearTimeout(delayDebounceFun);
+  }, [maxPriceText]);
   return (
     <div className="productSearchPage">
       <aside>
@@ -62,8 +78,8 @@ const Search = () => {
             type="range"
             min={100}
             max={1000000}
-            value={maxPrice}
-            onChange={(e) => setMaxPrice(Number(e.target.value))}
+            value={maxPriceText}
+            onChange={(e) => setMaxPriceText(Number(e.target.value))}
           />
         </div>
         <div>
@@ -84,8 +100,8 @@ const Search = () => {
         <input
           type="text"
           placeholder="Search by name.... "
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          value={searchText}
+          onChange={(e) => setSearchText(e.target.value)}
         />
 
         {productLoading ? (
