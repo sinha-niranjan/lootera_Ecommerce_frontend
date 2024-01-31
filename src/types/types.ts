@@ -17,7 +17,7 @@ export type Product = {
   _id: string;
 };
 
-export type ShippingInfo  = {
+export type ShippingInfo = {
   address: string;
   city: string;
   state: string;
@@ -32,4 +32,22 @@ export type CartItem = {
   price: number;
   quantity: number;
   stock: number;
+};
+
+export type OrderItems = Omit<CartItem, "stock"> & { _id: string };
+
+export type Order = {
+  orderItems: OrderItems[];
+  ShippingInfo: ShippingInfo;
+  subtotal: number;
+  tax: number;
+  shippingCharges: number;
+  discount: number;
+  total: number;
+  status: string;
+  _id: string;
+  user: {
+    name: string;
+    _id: string;
+  }
 };
