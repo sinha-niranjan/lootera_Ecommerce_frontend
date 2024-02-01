@@ -40,6 +40,7 @@ const TransactionManagement = lazy(
   () => import("./pages/admin/management/transactionmanagement")
 );
 const NotFound = lazy(() => import("./pages/not-found"));
+const Checkout = lazy(() => import("./pages/checkout"));
 
 const App = () => {
   const { user, loading } = useSelector(
@@ -84,6 +85,7 @@ const App = () => {
             <Route path="/shipping" element={<Shipping />} />
             <Route path="/orders" element={<Orders />} />
             <Route path="/order/:id" element={<OrderDetails />} />
+            <Route path="/pay" element={<Checkout />} />
           </Route>
           {/* Admin Routes  */}
           // Rotues
