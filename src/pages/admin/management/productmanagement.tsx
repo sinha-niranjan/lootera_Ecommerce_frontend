@@ -95,7 +95,7 @@ const Productmanagement = () => {
     }
   }, [data]);
 
-  if (isError) <Navigate to={"/404"} />;
+  if (isError) return  <Navigate to={"/404"} />;
 
   return (
     <div className="admin-container">
