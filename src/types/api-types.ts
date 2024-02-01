@@ -13,6 +13,11 @@ export type MessageResponse = {
   message: string;
 };
 
+export type AllUserResponse = {
+  success: boolean;
+  users: User[];
+};
+
 export type UserResponse = {
   success: boolean;
   user: User;
@@ -21,6 +26,16 @@ export type UserResponse = {
 export type AllProductResponse = {
   success: boolean;
   products: Product[];
+};
+
+export type AllOrdersResponse = {
+  success: boolean;
+  orders: Order[];
+};
+
+export type OrderDetailsResponse = {
+  success: boolean;
+  order: Order;
 };
 
 export type CategoriesResponse = {
@@ -71,15 +86,12 @@ export type NewOrderRequest = {
   user: string;
 };
 
-export type AllOrdersResponse = {
-  success: boolean;
-  orders: Order[];
-};
+export type DeleteUserRequest = {
+  userId: string;
+  adminUserId: string;
+}
 
-export type OrderDetailsResponse = {
-  success: boolean;
-  order: Order;
-};
+
 
 export type UpdateOrderRequest = {
   userId: string;
