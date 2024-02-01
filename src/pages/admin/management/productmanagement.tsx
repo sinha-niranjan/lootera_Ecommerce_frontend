@@ -6,9 +6,9 @@ import { userReducerInitialState } from "../../../types/reducer-types";
 import {
   useDeleteProductMutation,
   useProductDetailsQuery,
-  useUpdatePRoductMutation,
+  useUpdateProductMutation,
 } from "../../../redux/api/productAPI";
-import { useNavigate, useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { server } from "../../../redux/store";
 import { Skeleton } from "../../../components/loader";
 import { responseToast } from "../../../utils/features";
@@ -20,7 +20,7 @@ const Productmanagement = () => {
 
   const params = useParams();
   const navigate = useNavigate();
-  const { data, isLoading } = useProductDetailsQuery(params.id!);
+  const { data, isLoading, isError } = useProductDetailsQuery(params.id!);
 
   const { _id, price, photo, name, stock, category } = data?.product || {
     _id: "",
@@ -35,10 +35,10 @@ const Productmanagement = () => {
   const [stockUpdate, setStockUpdate] = useState<number>(stock);
   const [nameUpdate, setNameUpdate] = useState<string>(name);
   const [categoryUpdate, setCategoryUpdate] = useState<string>(category);
-  const [photoUpdate, setPhotoUpdate] = useState<string>('');
+  const [photoUpdate, setPhotoUpdate] = useState<string>("");
   const [photoFile, setPhotoFile] = useState<File>();
 
-  const [updateProduct] = useUpdatePRoductMutation();
+  const [updateProduct] = useUpdateProductMutation();
   const [deleteProduct] = useDeleteProductMutation();
 
   const changeImageHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -94,6 +94,8 @@ const Productmanagement = () => {
       setCategoryUpdate(data.product.category);
     }
   }, [data]);
+
+  if (isError) <Navigate to={"/404"} />;
 
   return (
     <div className="admin-container">
