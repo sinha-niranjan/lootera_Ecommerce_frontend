@@ -2,7 +2,10 @@ import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { BiArrowBack } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { cartReducerInitialState } from "../types/reducer-types";
+import {
+  cartReducerInitialState,
+  userReducerInitialState,
+} from "../types/reducer-types";
 import axios from "axios";
 import { server } from "../redux/store";
 import toast from "react-hot-toast";
@@ -17,6 +20,10 @@ interface shippingInfoDataType {
 }
 
 const Shipping = () => {
+  const { user } = useSelector(
+    (state: { userReducer: userReducerInitialState }) => state.userReducer
+  );
+
   const { cartItems, total } = useSelector(
     (state: { cartReducer: cartReducerInitialState }) => state.cartReducer
   );
@@ -49,6 +56,8 @@ const Shipping = () => {
         `${server}/api/v1/payment/create`,
         {
           amount: total,
+          shippingInfo,
+          user:user?.name!,
         },
         { headers: { "content-type": "application/json" } }
       );
