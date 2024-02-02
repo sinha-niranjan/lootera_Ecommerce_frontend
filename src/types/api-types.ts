@@ -96,7 +96,7 @@ export type DeleteProductRequest = {
 };
 
 export type NewOrderRequest = {
-  ShippingInfo: ShippingInfo;
+  shippingInfo: ShippingInfo;
   orderItems: CartItem[];
   subtotal: number;
   tax: number;

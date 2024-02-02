@@ -31,7 +31,7 @@ const CheckoutForm = () => {
   );
 
   const {
-    ShippingInfo,
+    shippingInfo,
     cartItems,
     subtotal,
     tax,
@@ -52,7 +52,7 @@ const CheckoutForm = () => {
     setIsProcessing(true);
 
     const orderData: NewOrderRequest = {
-      ShippingInfo,
+      shippingInfo,
       orderItems: cartItems,
       subtotal,
       tax,

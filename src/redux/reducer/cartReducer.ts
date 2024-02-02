@@ -10,7 +10,7 @@ const initialState: cartReducerInitialState = {
   shippingCharges: 0,
   discount: 0,
   total: 0,
-  ShippingInfo: {
+  shippingInfo: {
     address: "",
     city: "",
     state: "",
@@ -61,7 +61,7 @@ export const cartReducer = createSlice({
       state.discount = action.payload;
     },
     saveShippingInfo: (state, action: PayloadAction<ShippingInfo>) => {
-      state.ShippingInfo = action.payload;
+      state.shippingInfo = action.payload;
     },
     resetCart: () => initialState,
   },
