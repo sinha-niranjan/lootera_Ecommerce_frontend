@@ -1,9 +1,9 @@
 import { FetchBaseQueryError } from "@reduxjs/toolkit/query/react";
 import { MessageResponse } from "../types/api-types";
-import { SerializedError, current } from "@reduxjs/toolkit";
+import { SerializedError } from "@reduxjs/toolkit";
 import { NavigateFunction } from "react-router-dom";
 import toast from "react-hot-toast";
-import moment, { months } from "moment";
+import moment from "moment";
 
 type ResType =
   | {
