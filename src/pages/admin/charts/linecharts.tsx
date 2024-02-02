@@ -1,12 +1,12 @@
+import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
 import AdminSidebar from "../../../components/admin/AdminSidebar";
 import { LineChart } from "../../../components/admin/Charts";
-import { userReducerInitialState } from "../../../types/reducer-types";
-import { getLastMonths } from "../../../utils/features";
+import { Skeleton } from "../../../components/loader";
 import { useLineQuery } from "../../../redux/api/dashboardApi";
 import { CustomError } from "../../../types/api-types";
-import toast from "react-hot-toast";
-import { Skeleton } from "../../../components/loader";
+import { userReducerInitialState } from "../../../types/reducer-types";
+import { getLastMonths } from "../../../utils/features";
 
 const { last12Months: months } = getLastMonths();
 
